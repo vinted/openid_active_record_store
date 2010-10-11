@@ -12,7 +12,7 @@ module OpenidStoreActiveRecord
     OpenID::Association.new(
       open_id_association.handle,
       open_id_association.secret,
-      open_id_association.issued,
+      open_id_association.issued_at,
       open_id_association.lifetime,
       open_id_association.assoc_type
     )
