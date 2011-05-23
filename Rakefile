@@ -7,10 +7,11 @@ task :default => :test
 
 desc 'Test the openid_store_active_record plugin.'
 Rake::TestTask.new(:test) do |t|
-  t.libs << 'lib'
-  t.libs << 'test'
+  t.ruby_opts << '-rubygems'
+  t.libs += %w[lib test]
   t.pattern = 'test/**/*_test.rb'
   t.verbose = true
+  t.warning = true
 end
 
 desc 'Generate documentation for the openid_store_active_record plugin.'
