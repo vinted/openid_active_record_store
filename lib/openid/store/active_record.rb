@@ -1,12 +1,11 @@
 require 'openid/util'
 require 'openid/store/interface'
 require 'openid/association'
+require 'openssl'
 
 module OpenID
   module Store
     class ActiveRecord < Interface
-
-      include OpenidStoreActiveRecord
 
       # Put a Association object into storage.
       # When implementing a store, don't assume that there are any limitations
@@ -89,6 +88,30 @@ module OpenID
         nonces = OpenidNonce.all
         ids = nonces.collect { |n| n.id if (n.timestamp - now).abs > Nonce.skew }
         OpenidNonce.delete ids.compact
+      end
+
+      private
+
+      def targetize(server_url)
+        OpenSSL::Digest::MD5.hexdigest(server_url)
+      end
+
+      def build_association(open_id_association)
+        OpenID::Association.new(
+          open_id_association.handle,
+          open_id_association.secret,
+          open_id_association.issued_at,
+          open_id_association.lifetime,
+          open_id_association.assoc_type
+        )
+      end
+
+      def create_nonce(server_url, timestamp, salt)
+        open_id_nonce = OpenidNonce.new
+        open_id_nonce.target = targetize(server_url)
+        open_id_nonce.server_url = server_url
+        open_id_nonce.timestamp = timestamp
+        open_id_nonce.save
       end
 
     end
