@@ -1,3 +1,4 @@
+#!/usr/bin/env rake
 require 'rake/testtask'
 require 'rake/rdoctask'
 
