@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.summary = 'An ActiveRecord store for OpenID'
   s.description = 'An ActiveRecord store for OpenID, forked from its original author for rails 3 support'
 
-  s.files = `git ls-files` - %W[.gitignore #{File.basename __FILE__}]
+  s.files = `git ls-files`.split - %W[.gitignore #{File.basename __FILE__}]
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
