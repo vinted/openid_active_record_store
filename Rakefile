@@ -22,3 +22,8 @@ RDoc::Task.new(:rdoc) do |rdoc|
   rdoc.rdoc_files.include('README')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
+
+desc "build gem"
+task :gem do
+  sh "gem build openid_active_record_store.gemspec"
+end
