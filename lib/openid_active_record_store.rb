@@ -9,17 +9,22 @@ module OpenidActiveRecordStore
     rake_tasks do
       namespace :openid_active_record_store do
         namespace :install do
-          desc "install migrations"
-          task :migrations => %w[db/migrations/create_openid_associations.rb db/migrations/create_openid_nonces.rb]
 
-          cp_task = lambda do |t|
-            basename = File.basename(t.name)
-            cp File.expand_path("../../db/migrations/#{basename}", __FILE__), t.name
+          files = File.expand_path("../../db/migrate/*.rb", __FILE__)
+          sources = FileList[files]
+          targets = sources.map do |source|
+            ts = Time.now.to_f.to_s.sub('.', '')
+            "db/migrate/#{ts}_#{File.basename(source)}"
           end
 
-          file 'db/migrations/create_openid_associations.rb', &cp_task
+          desc "install migrations"
+          task :migrations => targets
 
-          file 'db/migrations/create_openid_nonces.rb', &cp_task
+          sources.zip(targets).each do |source, target|
+            file target => source do
+              cp source, target
+            end
+          end
 
         end
       end
