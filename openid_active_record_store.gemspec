@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{openid_active_record_store}
-  s.version = "1.0.0"
+  s.version = "1.0.1"
   s.authors = ['James Tucker', 'Kazuyoshi Tlacaelel']
   s.email = 'info@wildfireapp.com'
   s.homepage = 'http://github.com/wildfireapp/openid_active_record_store'
