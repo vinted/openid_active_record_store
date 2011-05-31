@@ -7,7 +7,10 @@ module OpenidActiveRecordStore
   end
   class Railtie < Rails::Railtie
     rake_tasks do
-      include ActiveRecord::Generators::Migration
+      require 'rails/generators/migration'
+      include Rails::Generators::Migration
+      require 'rails/generators/active_record'
+      extend ActiveRecord::Generators::Migration
       namespace :openid_active_record_store do
         namespace :install do
 
