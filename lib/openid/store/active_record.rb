@@ -29,7 +29,7 @@ module OpenID
       # the one matching association is expired. (Is allowed to GC expired
       # associations when found.)
       def get_association(server_url, handle=nil)
-        oas = OpenidAssociation.find_all_by_target targetize(server_url)
+        oas = OpenidAssociation.where(target: targetize(server_url))
         return nil if oas.empty?
         unless handle.nil?
           return nil unless oas.collect(&:handle).include? handle
@@ -41,7 +41,7 @@ module OpenID
       # If there is a matching association, remove it from the store and
       # return true, otherwise return false.
       def remove_association(server_url, handle)
-        oas = OpenidAssociation.find_all_by_target targetize(server_url)
+        oas = OpenidAssociation.where(target: targetize(server_url))
         return false unless oas.collect(&:handle).include? handle
         oas.find_all { |oa| oa.handle == handle }.each(&:delete).size > 0
       end

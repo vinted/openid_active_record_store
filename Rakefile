@@ -11,7 +11,6 @@ Rake::TestTask.new(:test) do |t|
   t.libs += %w[test]
   t.pattern = 'test/**/*_test.rb'
   t.verbose = true
-  t.warning = true
 end
 
 desc 'Generate documentation for the openid_store_active_record plugin.'
