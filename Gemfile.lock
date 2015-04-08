@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    openid_active_record_store (1.0.1)
+    vinted-openid_active_record_store (1.1.0)
       protected_attributes
       rails (~> 4.0)
       ruby-openid (~> 2.5.0)
@@ -114,4 +114,4 @@ PLATFORMS
 
 DEPENDENCIES
   mysql2
-  openid_active_record_store!
+  vinted-openid_active_record_store!
