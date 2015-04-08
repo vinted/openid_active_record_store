@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    vinted-openid_active_record_store (1.1.0)
+    vinted-openid_active_record_store (1.1.1)
       protected_attributes (~> 1.0)
       rails (~> 4.0)
       ruby-openid (~> 2.5)

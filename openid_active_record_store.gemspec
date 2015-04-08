@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{vinted-openid_active_record_store}
-  s.version = "1.1.0"
+  s.version = "1.1.1"
   s.authors = ['Tomas Varneckas', 'James Tucker', 'Kazuyoshi Tlacaelel']
   s.email = 'tomas.varneckas@vinted.com'
   s.homepage = 'http://github.com/vinted/openid_active_record_store'
@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.require_paths = [%q{lib}]
   s.rubygems_version = %q{1.8.3}
   s.summary = 'An ActiveRecord store for OpenID'
-  s.description = 'An ActiveRecord store for OpenID, forked from its original author for rails 3 support'
+  s.description = 'An ActiveRecord store for OpenID, forked from a form Rails 4.2 support'
 
   s.files = `git ls-files`.split - %W[.gitignore #{File.basename __FILE__}]
 
