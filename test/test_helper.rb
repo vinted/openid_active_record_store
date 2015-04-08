@@ -1,23 +1,25 @@
-require 'test/unit'
+require 'minitest/autorun'
 require 'rails'
 require 'openid_active_record_store'
 require 'active_record'
 
 db = {
-  :adapter  => :mysql2,
-  :database => 'openid_active_record_store'
+  adapter: :mysql2,
+  database: 'openid_active_record_store',
+  socket: '/tmp/mysql.sock',
+  username: 'root',
+  password: 'a'
 }
 
-# XXX  yes, there are better ways. patches please!
-
-system "echo 'drop   database #{db[:database]};' | mysql5 -uroot" rescue nil
-system "echo 'create database #{db[:database]};' | mysql5 -uroot"
+system "echo 'drop   database #{db[:database]};' | mysql" rescue nil
+system "echo 'create database #{db[:database]};' | mysql"
 
 ActiveRecord::Base.establish_connection db
 
 Dir['db/migrate/*.rb'].each do |migration|
-  require migration
-  Object.const_get(File.basename(migration, '.rb').camelize).up
+  load migration
+  name = File.basename(migration, '.rb').gsub(/\A\d+_/, '')
+  Object.const_get(name.camelize).up
 end
 
 Dir['app/models/*.rb'].each do |model|
