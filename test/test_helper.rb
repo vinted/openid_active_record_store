@@ -1,7 +1,8 @@
 require 'minitest/autorun'
+
 require 'rails'
-require 'openid_active_record_store'
 require 'active_record'
+require 'openid_active_record_store'
 
 db = {
   adapter: :mysql2,
