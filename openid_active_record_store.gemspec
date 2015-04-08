@@ -17,6 +17,6 @@ Gem::Specification.new do |s|
   s.files = `git ls-files`.split - %W[.gitignore #{File.basename __FILE__}]
 
   s.add_dependency 'rails', '~> 4.0'
-  s.add_dependency 'protected_attributes'
-  s.add_dependency 'ruby-openid', '~> 2.5.0'
+  s.add_dependency 'protected_attributes', '~> 1.0'
+  s.add_dependency 'ruby-openid', '~> 2.5'
 end
