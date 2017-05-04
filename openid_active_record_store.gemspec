@@ -12,11 +12,10 @@ Gem::Specification.new do |s|
   s.require_paths = [%q{lib}]
   s.rubygems_version = %q{1.8.3}
   s.summary = 'An ActiveRecord store for OpenID'
-  s.description = 'An ActiveRecord store for OpenID, forked from a form Rails 4.2 support'
+  s.description = 'An ActiveRecord store for OpenID, forked to add newer Rails support'
 
   s.files = `git ls-files`.split - %W[.gitignore #{File.basename __FILE__}]
 
-  s.add_dependency 'rails', '~> 4.0'
-  s.add_dependency 'protected_attributes', '~> 1.0'
+  s.add_dependency 'rails', '>= 4.0'
   s.add_dependency 'ruby-openid', '~> 2.5'
 end
