@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{vinted-openid_active_record_store}
-  s.version = "1.1.1"
+  s.version = "1.2.0"
   s.authors = ['Tomas Varneckas', 'James Tucker', 'Kazuyoshi Tlacaelel']
   s.email = 'tomas.varneckas@vinted.com'
   s.homepage = 'http://github.com/vinted/openid_active_record_store'
